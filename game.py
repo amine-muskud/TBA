@@ -29,33 +29,87 @@ class Game:
         self.commands["go"] = go
         
         # Setup rooms
+        Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animé. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
+        self.rooms.append(Volcan)
+		
+        Bord = Room("Bord du volcan", " Vous vous approchez doucement du bord du volcan lorsque vous êtes soudainenement pris de panique après avoir entendu un bruit effrayant, vous glissez et vous tomber dans la lave. Vous êtes mort, il ne fallait décidément pas s'approcher du bord...")
+        self.rooms.append(Bord)
+		
+        Plage = Room("Plage", " Vous arrivez sur une plage bondé de monde. Vous apercevez un camion de glace, un terrain de volley et un peu plus loin un feu de camps. Vous remarquez aussi que le chemin reliant la Plage au Volcan n'est plus accessible " )
+        self.rooms.append(Plage)
+		
+        Village = Room("Village", " Vous arrivez dans un village où vous êtes rapidement acceuilli par les habitants qui vous propose de faire le tour du village. Vous pouvez ainsi visiter la ferme, la mairie ou en cas de faim aller vous restaurer en Kebab du coin" )
+        self.rooms.append(Village)
+		
+        Jungle = Room("Jungle", " Vous arrivez dans une impressionnante Jungle. Vous apercevez un cabane perché au loin, une grotte souterraine qui ne demande qu'à être exploré et un impressionant arbre vieux de plus de 100ans")
+        self.rooms.append(Jungle)
+		
+        Kebab = Room(" Keb à Bord", "Vous arrivez au 'Keb à Bord', un délicieux restaurant où vous pouvez manger à votre faim. Il suffit de crier ' Chef ' pour commander " ) 
+        self.rooms.append(Kebab)
+		
+        Mairie = Room(" Mairie du village ", " Vous arrivez dans la Mairie du Village, vous apercevez quelqu'un a l'accueil. Souhaitez-vous allez le voir ?" )
+        self.rooms.append(Mairie)
+		
+        Ferme = Room(" Ferme du village", " Vous arrivez dans la ferme du village. Souhaitez-vous participer aux tâches du jour ? ")
+        self.rooms.append(Ferme)
+		
+        Cabane = Room(" Cabane perché ", " Vous êtes au pieds d'un cabane perché, souhaitez-vous y monter ? " )
+        self.rooms.append(Cabane)
+		
+        Grotte = Room("Grotte souterraine", " Vous arrivez devant une grotte souterraine, souhaitez-vous y descendre ? " )
+        self.rooms.append(Grotte)
+		
+        Arbre = Room(" Arbre de 100 ans " , " Vous arrivez devant l'arbre de 100 ans, vous apercevez quelque chose au pieds de l'arbre. Souhaitez-vous examiner le pieds de l'arbre ? " )
+        self.rooms.append(Arbre)
+		
+        Glace = Room("Marchand de glace", " Vous arrivez devant le camion de glace. Vous avez très chaud. Souhaitez-vous vous rafraichir ? ")
+        self.rooms.append(Glace)
 
-        forest = Room("Forest", "dans une forêt enchantée. Vous entendez une brise légère à travers la cime des arbres.")
-        self.rooms.append(forest)
-        tower = Room("Tower", "dans une immense tour en pierre qui s'élève au dessus des nuages.")
-        self.rooms.append(tower)
-        cave = Room("Cave", "dans une grotte profonde et sombre. Des voix semblent provenir des profondeurs.")
-        self.rooms.append(cave)
-        cottage = Room("Cottage", "dans un petit chalet pittoresque avec un toit de chaume. Une épaisse fumée verte sort de la cheminée.")
-        self.rooms.append(cottage)
-        swamp = Room("Swamp", "dans un marécage sombre et ténébreux. L'eau bouillonne, les abords sont vaseux.")
-        self.rooms.append(swamp)
-        castle = Room("Castle", "dans un énorme château fort avec des douves et un pont levis. Sur les tours, des flèches en or massif.")
-        self.rooms.append(castle)
+        Feu = Room("Feu de camps ", " Vous arrivez au niveau d'un feu de camps desert. Vous apercevez un sac à dos abandonnées. Souhaitez-vous jeter un coup d'oeil au sac à dos ? " )
+        self.rooms.append(Feu)
+		
+        Volley = Room("Terrain de Volley", " Vous apercevez un terrain de volley. Il semblerait qu'une partie s'apprête à commencer. Souhaitez-vous jouer ? " )
+        self.rooms.append(Volley)
+
+        Interieur = Room("Interieur de la cabane", " Vous arrivez à l'interieur de la cabane")
+        self.rooms.append(Interieur)
 
         # Create exits for rooms
 
-        forest.exits = {"N" : cave, "E" : None, "S" : castle, "O" : None}
-        tower.exits = {"N" : cottage, "E" : None, "S" : None, "O" : None}
-        cave.exits = {"N" : None, "E" : cottage, "S" : forest, "O" : None}
-        cottage.exits = {"N" : None, "E" : None, "S" : tower, "O" : cave}
-        swamp.exits = {"N" : tower, "E" : None, "S" : None, "O" : castle}
-        castle.exits = {"N" : forest, "E" : swamp, "S" : None, "O" : None}
+        Interieur.exits={"DOWN": Cabane}
+
+        Volcan.exits = {"N" : None, "E" : Jungle, "S" : Village, "O" : Plage,"Bord" : Bord}
+
+        Plage.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+
+        Feu.exits = {"Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+
+        Volley.exits = {"Feu_de_camp" : Feu, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+
+        Glace.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Chemin_village" : Village}
+
+        Village.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}
+
+        Mairie.exits = {"Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}      
+
+        Ferme.exits = {"Mairie" : Mairie, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}
+
+        Kebab.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Chemin_plage" : Plage, "N" : Volcan}
+
+        Jungle.exits = {"UP" : Cabane, "DOWN" : Grotte, " Arbre'" : Arbre, "O" : Volcan}
+
+        Cabane.exits = {"DOWN" : Grotte, "Arbre'" : Arbre, "O" : Volcan, "UP" : Interieur}
+
+        Grotte.exits = {"UP" : Cabane, "Arbre" : Arbre, "O" : Volcan}
+
+        Arbre.exits = {"UP" : Cabane, "DOWN" : Grotte, "O" : Volcan}
+
+
 
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
-        self.player.current_room = swamp
+        self.player.current_room = Volcan
 
     # Play the game
     def play(self):
@@ -82,6 +136,10 @@ class Game:
         else:
             command = self.commands[command_word]
             command.action(self, list_of_words, command.number_of_parameters)
+           # if len(list_of_words)==2:
+              #  direction_word = list_of_words[1]
+               # if direction_word not in self.rooms:
+                #    print(" Il n'est pas possible d'aller dans cette direction !")
 
     # Print the welcome message
     def print_welcome(self):
