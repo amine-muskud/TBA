@@ -1,5 +1,25 @@
 # Define the Player class.
 class Player():
+    """
+    Cette classe représente un joueur. Un joueur est composé d'un nom et une direction.
+
+    Attributs :
+        name (str): Le nom du playeur.
+        direction (str): La direction à suivre.
+
+    Méthodes :
+        __init__(self, name) : Le constructeur.
+        move(self, direction) : Définir la méthode de déplacement.
+
+    Exemples :
+
+    >>> player = Player("Arthur" , "N")
+    >>> player.name
+    'Arthur'
+    >>> player.direction
+    'N'
+        
+    """
 
     # Define the constructor.
     def __init__(self, name):
