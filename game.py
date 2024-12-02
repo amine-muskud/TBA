@@ -76,33 +76,33 @@ class Game:
 
         # Create exits for rooms
 
-        Interieur.exits={"DOWN": Cabane}
+        Interieur.exits={"DOWN": Cabane, "N" : None, "E" :None, "S" : None, "O" : None}
 
         Volcan.exits = {"N" : None, "E" : Jungle, "S" : Village, "O" : Plage,"Bord" : Bord}
 
-        Plage.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+        Plage.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
 
-        Feu.exits = {"Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+        Feu.exits = {"Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
 
-        Volley.exits = {"Feu_de_camp" : Feu, "Marchand_de_glaces" : Glace, "Chemin_village" : Village}
+        Volley.exits = {"Feu_de_camp" : Feu, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
 
-        Glace.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Chemin_village" : Village}
+        Glace.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
 
-        Village.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}
+        Village.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan, "E" :None, "S" : None, "O" : None}
 
-        Mairie.exits = {"Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}      
+        Mairie.exits = {"Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan,"E" :None, "S" : None, "O" : None}      
 
-        Ferme.exits = {"Mairie" : Mairie, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan}
+        Ferme.exits = {"Mairie" : Mairie, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan, "E" :None, "S" : None, "O" : None}
 
-        Kebab.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Chemin_plage" : Plage, "N" : Volcan}
+        Kebab.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Chemin_plage" : Plage, "N" : Volcan,"E" :None, "S" : None, "O" : None}
 
-        Jungle.exits = {"UP" : Cabane, "DOWN" : Grotte, " Arbre'" : Arbre, "O" : Volcan}
+        Jungle.exits = {"UP" : Cabane, "DOWN" : Grotte, " Arbre'" : Arbre, "O" : Volcan,"N" : None, "E" :None, "S" : None}
 
-        Cabane.exits = {"DOWN" : Grotte, "Arbre'" : Arbre, "O" : Volcan, "UP" : Interieur}
+        Cabane.exits = {"DOWN" : Grotte, "Arbre'" : Arbre, "O" : Volcan, "UP" : Interieur,"N" : None, "E" :None, "S" : None}
 
-        Grotte.exits = {"UP" : Cabane, "Arbre" : Arbre, "O" : Volcan}
+        Grotte.exits = {"UP" : Cabane, "Arbre" : Arbre, "O" : Volcan,"N" : None, "E" :None, "S" : None}
 
-        Arbre.exits = {"UP" : Cabane, "DOWN" : Grotte, "O" : Volcan}
+        Arbre.exits = {"UP" : Cabane, "DOWN" : Grotte, "O" : Volcan,"N" : None, "E" :None, "S" : None}
 
 
 
@@ -136,10 +136,10 @@ class Game:
         else:
             command = self.commands[command_word]
             command.action(self, list_of_words, command.number_of_parameters)
-           # if len(list_of_words)==2:
-              #  direction_word = list_of_words[1]
-               # if direction_word not in self.rooms:
-                #    print(" Il n'est pas possible d'aller dans cette direction !")
+            ####if len(list_of_words)==2:
+             ###   direction_word = list_of_words[1]
+              ##  if direction_word not in self.rooms:
+               #     print(" Il n'est pas possible d'aller dans cette direction !")
 
     # Print the welcome message
     def print_welcome(self):
