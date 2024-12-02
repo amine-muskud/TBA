@@ -32,6 +32,9 @@ class Game:
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
         self.rooms.append(Volcan)
 		
+        Chemin = Room("Sentier de terre", "Vous êtes sur un sentier de terre, au sud il vous mène vers un village, à l'ouest vers une plage et à l'est vers une jungle")
+        self.rooms.append(Chemin)
+
         Bord = Room("Bord du volcan", " Vous vous approchez doucement du bord du volcan lorsque vous êtes soudainenement pris de panique après avoir entendu un bruit effrayant, vous glissez et vous tomber dans la lave. Vous êtes mort, il ne fallait décidément pas s'approcher du bord...")
         self.rooms.append(Bord)
 		
@@ -68,43 +71,46 @@ class Game:
         Feu = Room("Feu de camps ", " Vous arrivez au niveau d'un feu de camps desert. Vous apercevez un sac à dos abandonné. Souhaitez-vous jeter un coup d'oeil au sac à dos ? " )
         self.rooms.append(Feu)
 		
-        Volley = Room("Terrain de Volley", " Vous apercevez un terrain de volley. Il semblerait qu'une partie s'apprête à commencer. Souhaitez-vous jouer ? " )
+        Volley = Room("Terrain de Volley", " Vous arrivez sur un terrain de volley. Il semblerait qu'une partie s'apprête à commencer. Souhaitez-vous jouer ? " )
         self.rooms.append(Volley)
 
         Interieur = Room("Interieur de la cabane", " Vous arrivez à l'interieur de la cabane")
         self.rooms.append(Interieur)
 
+        Fgrotte = Room( " Fond de la grotte", " Vous êtes dans le fond de la grotte")
+        self.rooms.append(Fgrotte)
 
         # Create exits for rooms
 
-        Interieur.exits={"DOWN": Cabane, "N" : None, "E" :None, "S" : None, "O" : None}
+        Interieur.exits={"D": Cabane, "N" : None, "E" :None, "S" : None, "O" : None,"U": None}
 
-        Volcan.exits = {"N" : None, "E" : Jungle, "S" : Village, "O" : Plage,"Bord" : Bord}
+        Volcan.exits = {"D": Chemin, "N" : None, "E" :None, "S" : None, "O" : None,"U": Bord}
 
-        Plage.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
+        Plage.exits = {"D": None, "N" : Glace, "E" :Chemin, "S" : None, "O" : None,"U": None}
 
-        Feu.exits = {"Volley" : Volley, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
+        Feu.exits = {"D":   None, "N" : None, "E" :None, "S" : Glace, "O" : None,"U": None}
 
-        Volley.exits = {"Feu_de_camp" : Feu, "Marchand_de_glaces" : Glace, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
+        Volley.exits = {"D": None, "N" : None, "E" :Glace, "S" : None, "O" : None,"U": None}
 
-        Glace.exits = {"Feu_de_camp" : Feu, "Volley" : Volley, "Chemin_village" : Village,"N" : None, "E" :None, "S" : None, "O" : None}
+        Glace.exits = {"D": None, "N" : Feu, "E" :None, "S" : None, "O" : Volley,"U": None}
 
-        Village.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan, "E" :None, "S" : None, "O" : None}
+        Village.exits = {"D": None, "N" : Chemin, "E" :None, "S" : Kebab, "O" : Mairie,"U": None}
 
-        Mairie.exits = {"Ferme" : Ferme, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan,"E" :None, "S" : None, "O" : None}      
+        Mairie.exits = {"D": None, "N" : None, "E" :Village, "S" : Ferme, "O" : None,"U": None}      
 
-        Ferme.exits = {"Mairie" : Mairie, "Kebab" : Kebab, "Chemin_plage" : Plage, "N" : Volcan, "E" :None, "S" : None, "O" : None}
+        Ferme.exits = {"D": None, "N" : Mairie, "E" :Kebab, "S" : None, "O" : None,"U": None}
 
-        Kebab.exits = {"Mairie" : Mairie, "Ferme" : Ferme, "Chemin_plage" : Plage, "N" : Volcan,"E" :None, "S" : None, "O" : None}
+        Kebab.exits = {"D": None, "N" : Village, "E" :None, "S" : None, "O" : Ferme,"U": None}
 
-        Jungle.exits = {"UP" : Cabane, "DOWN" : Grotte, " Arbre'" : Arbre, "O" : Volcan,"N" : None, "E" :None, "S" : None}
+        Cabane.exits = {"D": None, "N" : None, "E" :None, "S" : None, "O" : Jungle,"U": Interieur}
 
-        Cabane.exits = {"DOWN" : Grotte, "Arbre'" : Arbre, "O" : Volcan, "UP" : Interieur,"N" : None, "E" :None, "S" : None}
+        Jungle.exits = {"D": None, "N" : None, "E" :Cabane, "S" : None, "O" : Chemin,"U": None}
 
-        Grotte.exits = {"UP" : Cabane, "Arbre" : Arbre, "O" : Volcan,"N" : None, "E" :None, "S" : None}
+        Grotte.exits = {"D": Fgrotte, "N" : Jungle, "E" :None, "S" : None, "O" : None,"U": None}
 
-        Arbre.exits = {"UP" : Cabane, "DOWN" : Grotte, "O" : Volcan,"N" : None, "E" :None, "S" : None}
+        Fgrotte.exits = {"D": None, "N" : None, "E" :None, "S" : None, "O" : None,"U": Grotte}
 
+        Chemin.exits = {"D": None, "N" : Volcan, "E" :Jungle, "S" : Village, "O" : Plage,"U": None}
 
 
 
@@ -138,10 +144,6 @@ class Game:
         else:
             command = self.commands[command_word]
             command.action(self, list_of_words, command.number_of_parameters)
-            ####if len(list_of_words)==2:
-             ###   direction_word = list_of_words[1]
-              ##  if direction_word not in self.rooms:
-               #     print(" Il n'est pas possible d'aller dans cette direction !")
 
     # Print the welcome message
     def print_welcome(self):
