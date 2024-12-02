@@ -74,6 +74,7 @@ class Game:
         Interieur = Room("Interieur de la cabane", " Vous arrivez à l'interieur de la cabane")
         self.rooms.append(Interieur)
 
+
         # Create exits for rooms
 
         Interieur.exits={"DOWN": Cabane, "N" : None, "E" :None, "S" : None, "O" : None}
@@ -103,6 +104,7 @@ class Game:
         Grotte.exits = {"UP" : Cabane, "Arbre" : Arbre, "O" : Volcan,"N" : None, "E" :None, "S" : None}
 
         Arbre.exits = {"UP" : Cabane, "DOWN" : Grotte, "O" : Volcan,"N" : None, "E" :None, "S" : None}
+
 
 
 
