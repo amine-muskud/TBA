@@ -29,15 +29,20 @@ class Player():
     # Define the move method.
     def move(self, direction):
         # Get the next room from the exits dictionary of the current room.
-        next_room = self.current_room.exits[direction]
+        if direction in self.current_room.exits:
+            next_room= self.current_room.exits[direction]
 
-        # If the next room is None, print an error message and return False.
-        if next_room is None:
-            print("\nIl n'est pas possible de passer par là !\n")
+            if next_room is None:
+                print("\nCette direction n'existe pas\n")
+                return False
+            else:
+                self.current_room = next_room
+                print(f"{self.current_room.name}")
+            
+        else:
+            print(f"La commande de direction '{direction}' n'est pas valide !")
             return False
         
-        # Set the current room to the next room.
-        self.current_room = next_room
         print(self.current_room.get_long_description())
         return True
 

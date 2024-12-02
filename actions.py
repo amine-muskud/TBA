@@ -53,21 +53,21 @@ class Actions:
             print(MSG1.format(command_word=command_word))
             return False
         # Get the direction from the list of words.
-        direction = list_of_words[1]
-        ###if list_of_words[1] in ['E', 'e', 'est', 'Est', 'EST'] :
-        # #    list_of_words[1] = 'E'
-        ##if list_of_words[1] in ['S', 's', 'sud', 'Sud', 'SUD'] :
-        #     list_of_words[1] = 'S'
-        ##if list_of_words[1] in ['O', 'o', 'ouest', 'Ouest', 'OUEST'] :
-        ##     list_of_words[1] = 'O'
-        ##if list_of_words[1] in ['N', 'n', 'nord', 'Nord', 'NORD'] :
-        ##     list_of_words[1] = 'N'
-        #if list_of_words[1] in ['U', 'u', 'up', 'Up', 'UP'] :
-        ##     list_of_words[1] = 'U'
-        ##if list_of_words[1] in ['D', 'd', 'Down', 'DOWN', 'down'] :
-        ##     list_of_words[1] = 'D'
-#
         #direction = list_of_words[1]
+        if list_of_words[1] in ['E', 'e', 'est', 'Est', 'EST'] :
+            list_of_words[1] = 'E'
+        if list_of_words[1] in ['S', 's', 'sud', 'Sud', 'SUD'] :
+             list_of_words[1] = 'S'
+        if list_of_words[1] in ['O', 'o', 'ouest', 'Ouest', 'OUEST'] :
+             list_of_words[1] = 'O'
+        if list_of_words[1] in ['N', 'n', 'nord', 'Nord', 'NORD'] :
+             list_of_words[1] = 'N'
+        if list_of_words[1] in ['U', 'u', 'up', 'Up', 'UP'] :
+             list_of_words[1] = 'U'
+        if list_of_words[1] in ['D', 'd', 'Down', 'DOWN', 'down'] :
+             list_of_words[1] = 'D'
+#
+        direction = list_of_words[1]
         # Move the player in the direction specified by the parameter.
         player.move(direction)
         return True
