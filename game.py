@@ -29,43 +29,43 @@ class Game:
         self.commands["go"] = go
         
         # Setup rooms
-        Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animé. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
+        Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
         self.rooms.append(Volcan)
 		
         Bord = Room("Bord du volcan", " Vous vous approchez doucement du bord du volcan lorsque vous êtes soudainenement pris de panique après avoir entendu un bruit effrayant, vous glissez et vous tomber dans la lave. Vous êtes mort, il ne fallait décidément pas s'approcher du bord...")
         self.rooms.append(Bord)
 		
-        Plage = Room("Plage", " Vous arrivez sur une plage bondé de monde. Vous apercevez un camion de glace, un terrain de volley et un peu plus loin un feu de camps. Vous remarquez aussi que le chemin reliant la Plage au Volcan n'est plus accessible " )
+        Plage = Room("Plage", " Vous arrivez sur une plage bondée de monde. Vous apercevez un camion de glace, un terrain de volley et un peu plus loin un feu de camps. Vous remarquez aussi que le chemin reliant la Plage au Volcan n'est plus accessible " )
         self.rooms.append(Plage)
 		
-        Village = Room("Village", " Vous arrivez dans un village où vous êtes rapidement acceuilli par les habitants qui vous propose de faire le tour du village. Vous pouvez ainsi visiter la ferme, la mairie ou en cas de faim aller vous restaurer en Kebab du coin" )
+        Village = Room("Village", " Vous arrivez dans un village où vous êtes rapidement acceuilli par les habitants qui vous proposent de faire le tour du village. Vous pouvez ainsi visiter la ferme, la mairie ou en cas de faim aller vous restaurer en Kebab du coin" )
         self.rooms.append(Village)
 		
-        Jungle = Room("Jungle", " Vous arrivez dans une impressionnante Jungle. Vous apercevez un cabane perché au loin, une grotte souterraine qui ne demande qu'à être exploré et un impressionant arbre vieux de plus de 100ans")
+        Jungle = Room("Jungle", " Vous arrivez dans une impressionnante Jungle. Vous apercevez une cabane perchée au loin, une grotte souterraine qui ne demande qu'à être explorée et un impressionant arbre vieux de plus de 100ans")
         self.rooms.append(Jungle)
 		
         Kebab = Room(" Keb à Bord", "Vous arrivez au 'Keb à Bord', un délicieux restaurant où vous pouvez manger à votre faim. Il suffit de crier ' Chef ' pour commander " ) 
         self.rooms.append(Kebab)
 		
-        Mairie = Room(" Mairie du village ", " Vous arrivez dans la Mairie du Village, vous apercevez quelqu'un a l'accueil. Souhaitez-vous allez le voir ?" )
+        Mairie = Room(" Mairie du village ", " Vous arrivez dans la Mairie du Village, vous apercevez quelqu'un a l'accueil. Souhaitez-vous aller le voir ?" )
         self.rooms.append(Mairie)
 		
         Ferme = Room(" Ferme du village", " Vous arrivez dans la ferme du village. Souhaitez-vous participer aux tâches du jour ? ")
         self.rooms.append(Ferme)
 		
-        Cabane = Room(" Cabane perché ", " Vous êtes au pieds d'un cabane perché, souhaitez-vous y monter ? " )
+        Cabane = Room(" Cabane perché ", " Vous êtes au pied d'une cabane perchée, souhaitez-vous y monter ? " )
         self.rooms.append(Cabane)
 		
         Grotte = Room("Grotte souterraine", " Vous arrivez devant une grotte souterraine, souhaitez-vous y descendre ? " )
         self.rooms.append(Grotte)
 		
-        Arbre = Room(" Arbre de 100 ans " , " Vous arrivez devant l'arbre de 100 ans, vous apercevez quelque chose au pieds de l'arbre. Souhaitez-vous examiner le pieds de l'arbre ? " )
+        Arbre = Room(" Arbre de 100 ans " , " Vous arrivez devant l'arbre de 100 ans, vous apercevez quelque chose au pied de l'arbre. Souhaitez-vous examiner le pied de l'arbre ? " )
         self.rooms.append(Arbre)
 		
         Glace = Room("Marchand de glace", " Vous arrivez devant le camion de glace. Vous avez très chaud. Souhaitez-vous vous rafraichir ? ")
         self.rooms.append(Glace)
 
-        Feu = Room("Feu de camps ", " Vous arrivez au niveau d'un feu de camps desert. Vous apercevez un sac à dos abandonnées. Souhaitez-vous jeter un coup d'oeil au sac à dos ? " )
+        Feu = Room("Feu de camps ", " Vous arrivez au niveau d'un feu de camps desert. Vous apercevez un sac à dos abandonné. Souhaitez-vous jeter un coup d'oeil au sac à dos ? " )
         self.rooms.append(Feu)
 		
         Volley = Room("Terrain de Volley", " Vous apercevez un terrain de volley. Il semblerait qu'une partie s'apprête à commencer. Souhaitez-vous jouer ? " )
