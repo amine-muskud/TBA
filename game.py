@@ -53,7 +53,7 @@ class Game:
         Ferme = Room(" Ferme du village", " Vous arrivez dans la ferme du village. Souhaitez-vous participer aux tâches du jour ? ")
         self.rooms.append(Ferme)
 		
-        Cabane = Room(" Cabane perché ", " Vous êtes au pied d'une cabane perchée, souhaitez-vous y monter ? " )
+        Cabane = Room(" Cabane perchée ", " Vous êtes au pied d'une cabane perchée, souhaitez-vous y monter ? " )
         self.rooms.append(Cabane)
 		
         Grotte = Room("Grotte souterraine", " Vous arrivez devant une grotte souterraine, souhaitez-vous y descendre ? " )
