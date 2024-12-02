@@ -110,7 +110,7 @@ class Game:
 
         Fgrotte.exits = {"D": None, "N" : None, "E" :None, "S" : None, "O" : None,"U": Grotte}
 
-        Chemin.exits = {"D": None, "N" : Volcan, "E" :Jungle, "S" : Village, "O" : Plage,"U": None}
+        Chemin.exits = {"D": None, "N" : None, "E" :Jungle, "S" : Village, "O" : Plage,"U": Volcan}
 
 
 
