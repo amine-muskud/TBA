@@ -6,6 +6,7 @@ class Player():
     Attributs :
         name (str): Le nom du playeur.
         direction (str): La direction à suivre.
+        history (list) : liste des salles visitées
 
     Méthodes :
         __init__(self, name) : Le constructeur.
@@ -13,19 +14,28 @@ class Player():
 
     Exemples :
 
-    >>> player = Player("Arthur" , "N")
+    >>> player = Player("Arthur" , "N",["Village"])
     >>> player.name
     'Arthur'
     >>> player.direction
     'N'
-        
+    >>> player.direction
+    ["Village"]
     """
 
     # Define the constructor.
+    history = []
     def __init__(self, name):
         self.name = name
         self.current_room = None
     
+
+    def get_history(self,history):
+        print("\n Vous avez déja visité les pièces suivantes:")
+        for i in history:
+            print("-\t" + str(i))
+
+
     # Define the move method.
     def move(self, direction):
         # Get the next room from the exits dictionary of the current room.
@@ -38,12 +48,13 @@ class Player():
             else:
                 self.current_room = next_room
                 print(f"{self.current_room.name}")
-            
+                self.history.append(str(self.current_room))
         else:
             print(f"La commande de direction '{direction}' n'est pas valide !")
             return False
         
         print(self.current_room.get_long_description())
+        self.get_history(self.history)
         return True
-
+    
     
