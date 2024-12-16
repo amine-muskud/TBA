@@ -150,3 +150,30 @@ class Actions:
             print("\t- " + str(command))
         print()
         return True
+
+        def back(game, list_of_words,number_of_parameters):
+            player = game.player
+            size = len(player.history)
+            if size == 0:
+                print(" Le retour en arrière est impossible !")
+            else:
+                lieu_precedent = player.history[-1]
+                values = lieu_precedent.exits.values()
+                keys = lieu_precedent.exits.keys()
+                taille = len(values)
+                for i in range(taille):
+                    if values[i] == lieu_precedent :
+                        direction = keys(i)
+                        if direction == 'E' :
+                            direction = "O"
+                        if direction == 'O' :
+                            direction = "E"
+                        if direction == 'N' :
+                            direction = "S"
+                        if direction == 'S' :
+                            direction = "N"
+                        if direction == 'U' :
+                            direction = "D"
+                        if direction == 'D' :
+                            direction = "U"
+                        game.process_command( " go " + str(direction))
