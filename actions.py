@@ -66,7 +66,7 @@ class Actions:
              list_of_words[1] = 'U'
         if list_of_words[1] in ['D', 'd', 'Down', 'DOWN', 'down'] :
              list_of_words[1] = 'D'
-#
+
         direction = list_of_words[1]
         # Move the player in the direction specified by the parameter.
         player.move(direction)
@@ -151,29 +151,36 @@ class Actions:
         print()
         return True
 
-        def back(game, list_of_words,number_of_parameters):
-            player = game.player
-            size = len(player.history)
-            if size == 0:
-                print(" Le retour en arrière est impossible !")
-            else:
-                lieu_precedent = player.history[-1]
-                values = lieu_precedent.exits.values()
-                keys = lieu_precedent.exits.keys()
-                taille = len(values)
-                for i in range(taille):
-                    if values[i] == lieu_precedent :
-                        direction = keys(i)
-                        if direction == 'E' :
-                            direction = "O"
-                        if direction == 'O' :
-                            direction = "E"
-                        if direction == 'N' :
-                            direction = "S"
-                        if direction == 'S' :
-                            direction = "N"
-                        if direction == 'U' :
-                            direction = "D"
-                        if direction == 'D' :
-                            direction = "U"
-                        game.process_command( " go " + str(direction))
+    def back(game, list_of_words,number_of_parameters):
+        player = game.player
+        size = len(player.history)
+        if size == 0:               
+            print(" Le retour en arrière est impossible !")
+            return None
+        
+        else:
+            lieu_precedent = player.history.pop()
+            lieu_actuel = player.current_room
+
+            for dir, lieu in lieu_actuel.exits.items():
+                if lieu == lieu_precedent:
+                    print(lieu)
+
+            #print(lieu_precedent)
+            #for i in range(taille):
+            #    if values[i] == lieu_precedent :
+            #        direction = keys(i)
+            #        if direction == "E":
+            #            direction = "O"
+            #        if direction == "O":
+            #            direction = "E"
+            #        if direction == "N":
+            #            direction = "S"
+            #        if direction == "S":
+            #            direction = "N"
+            #        if direction == "D":
+            #            direction = "U"
+            #        if direction == "U":
+            #            direction = "D"
+#
+            #        game.process_command("go" + str(direction))

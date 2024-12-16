@@ -33,7 +33,7 @@ class Player():
     def get_history(self,history):
         print("\n Vous avez déja visité les pièces suivantes:")
         for i in history:
-            print("-\t" + str(i))
+            print("-\t" + i )
 
 
     # Define the move method.

@@ -29,6 +29,8 @@ class Game:
         self.commands["go"] = go
         history = Command("history",": historique des lieux visités ",Player.get_history, 0)
         self.commands["history"] = history
+        back = Command("back","Permet de retourner à la direction précédente",Actions.back,0)
+        self.commands["back"] = back
 
         # Setup rooms
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
