@@ -150,37 +150,27 @@ class Actions:
             print("\t- " + str(command))
         print()
         return True
+   
+    def look(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        lieu_actuel = game.player.current_room
+        lieu_actuel.get_inventory()
+        return True
 
-    def back(game, list_of_words,number_of_parameters):
+    def take(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
         player = game.player
-        size = len(player.history)
-        if size == 0:               
-            print(" Le retour en arrière est impossible !")
-            return None
-        
-        else:
-            lieu_precedent = player.history.pop()
-            lieu_actuel = player.current_room
-
-            for dir, lieu in lieu_actuel.exits.items():
-                if lieu == lieu_precedent:
-                    print(lieu)
-
-            #print(lieu_precedent)
-            #for i in range(taille):
-            #    if values[i] == lieu_precedent :
-            #        direction = keys(i)
-            #        if direction == "E":
-            #            direction = "O"
-            #        if direction == "O":
-            #            direction = "E"
-            #        if direction == "N":
-            #            direction = "S"
-            #        if direction == "S":
-            #            direction = "N"
-            #        if direction == "D":
-            #            direction = "U"
-            #        if direction == "U":
-            #            direction = "D"
-#
-            #        game.process_command("go" + str(direction))
+        game.player.current
+        lieu_actuel = game.player.current_room
+        lieu_actuel.inventory.remove(list_of_words)
+        player.inventory[list_of_words] = list_of_words.description

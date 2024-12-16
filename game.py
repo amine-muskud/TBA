@@ -6,6 +6,7 @@ from room import Room
 from player import Player
 from command import Command
 from actions import Actions
+from item import Item
 
 class Game:
 
@@ -29,8 +30,10 @@ class Game:
         self.commands["go"] = go
         history = Command("history",": historique des lieux visités ",Player.get_history, 0)
         self.commands["history"] = history
-        back = Command("back","Permet de retourner à la direction précédente",Actions.back,0)
-        self.commands["back"] = back
+        #back = Command("back","Permet de retourner à la direction précédente",Actions.back,0)
+        #self.commands["back"] = back
+        look = Command("look","Permet de voir les items aux alentours",Actions.look,0)
+        self.commands["look"] =  look
 
         # Setup rooms
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
@@ -116,7 +119,8 @@ class Game:
 
         Chemin.exits = {"D": None, "N" : None, "E" :Jungle, "S" : Village, "O" : Plage,"U": Volcan}
 
-
+        Bague = Item("baguee en argent","elle brille",2)
+        Volcan.inventory = set( ["Bague"])
 
         # Setup player and starting room
 

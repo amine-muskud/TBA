@@ -28,6 +28,7 @@ class Player():
     def __init__(self, name):
         self.name = name
         self.current_room = None
+        self.inventory = {}
     
 
     def get_history(self,history):
@@ -46,9 +47,9 @@ class Player():
                 print("\nCette direction n'existe pas\n")
                 return False
             else:
+                self.history.append(str(self.current_room))
                 self.current_room = next_room
                 print(f"{self.current_room.name}")
-                self.history.append(str(self.current_room))
         else:
             print(f"La commande de direction '{direction}' n'est pas valide !")
             return False
@@ -57,4 +58,10 @@ class Player():
         self.get_history(self.history)
         return True
     
-    
+    def get_inventory(self):
+        if self.inventory =={}:
+            return "Votre inventaire est vide !"
+        else:
+            print("\n Votre inventaire contient :")
+            for i in invetory.keys():
+                print("-\t" + i )
