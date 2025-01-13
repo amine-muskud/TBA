@@ -30,8 +30,8 @@ class Game:
         self.commands["go"] = go
         history = Command("history",": historique des lieux visités ",Player.get_history, 0)
         self.commands["history"] = history
-        #back = Command("back","Permet de retourner à la direction précédente",Actions.back,0)
-        #self.commands["back"] = back
+        back = Command("back","Permet de retourner à la direction précédente",Actions.back,0)
+        self.commands["back"] = back
         look = Command("look","Permet de voir les items aux alentours",Actions.look,0)
         self.commands["look"] =  look
 

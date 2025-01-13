@@ -150,7 +150,15 @@ class Actions:
             print("\t- " + str(command))
         print()
         return True
-   
+    
+    def back(game, list_of_words,number_of_parameters):
+        player = game.player
+        size = len(player.history)
+        if size >= 1 :
+            last_room = game.player.history.pop()
+            game.player.current_room = last_room
+            print(game.player.current_room.get_long_description())
+
     def look(game, list_of_words,number_of_parameters):
         l = len(list_of_words)
         # If the number of parameters is incorrect, print an error message and return False.

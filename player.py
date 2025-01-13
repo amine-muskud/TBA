@@ -63,5 +63,5 @@ class Player():
             return "Votre inventaire est vide !"
         else:
             print("\n Votre inventaire contient :")
-            for i in invetory.keys():
+            for i in inventory.keys():
                 print("-\t" + i )
