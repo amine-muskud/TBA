@@ -178,7 +178,7 @@ class Actions:
             print(MSG1.format(command_word=command_word))
             return False
         player = game.player
-        game.player.current
+        #game.player.current
         lieu_actuel = game.player.current_room
-        lieu_actuel.inventory.remove(list_of_words)
-        player.inventory[list_of_words] = list_of_words.description
+        lieu_actuel.inventory.remove(list_of_words[1])
+        player.inventory[list_of_words[1]] = list_of_words[1].description

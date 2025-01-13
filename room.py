@@ -59,5 +59,5 @@ class Room:
         else:
             print("La pièce contient :")
             for i in self.inventory:
-                print("-\t" + i)
+                print("-\t" + str(i))
                 

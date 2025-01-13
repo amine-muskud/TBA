@@ -34,7 +34,7 @@ class Player():
     def get_history(self,history):
         print("\n Vous avez déja visité les pièces suivantes:")
         for i in history:
-            print("-\t" + i )
+            print("-\t" + str(i) )
 
 
     # Define the move method.
@@ -47,7 +47,7 @@ class Player():
                 print("\nCette direction n'existe pas\n")
                 return False
             else:
-                self.history.append(str(self.current_room))
+                self.history.append(self.current_room)
                 self.current_room = next_room
                 print(f"{self.current_room.name}")
         else:
@@ -63,5 +63,5 @@ class Player():
             return "Votre inventaire est vide !"
         else:
             print("\n Votre inventaire contient :")
-            for i in inventory.keys():
+            for i in self.inventory.keys():
                 print("-\t" + i )

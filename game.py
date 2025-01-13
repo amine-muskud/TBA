@@ -34,6 +34,8 @@ class Game:
         self.commands["back"] = back
         look = Command("look","Permet de voir les items aux alentours",Actions.look,0)
         self.commands["look"] =  look
+        take = Command("take","Permet de récuperer les objets aux alentours",Actions.take,1)
+        self.commands["take"] = take
 
         # Setup rooms
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
@@ -119,8 +121,8 @@ class Game:
 
         Chemin.exits = {"D": None, "N" : None, "E" :Jungle, "S" : Village, "O" : Plage,"U": Volcan}
 
-        Bague = Item("baguee en argent","elle brille",2)
-        Volcan.inventory = set( ["Bague"])
+        Bague = Item("Bague","elle brille",2)
+        Volcan.inventory = set([Bague])
 
         # Setup player and starting room
 
@@ -157,7 +159,6 @@ class Game:
     def print_welcome(self):
         print(f"\nBienvenue {self.player.name} dans ce jeu d'aventure !")
         print("Entrez 'help' si vous avez besoin d'aide.")
-        #
         print(self.player.current_room.get_long_description())
     
 
