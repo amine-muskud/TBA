@@ -64,4 +64,4 @@ class Player():
         else:
             print("\n Votre inventaire contient :")
             for i in self.inventory.keys():
-                print("-\t" + i )
+                print("-\t" + str(i) )
