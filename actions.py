@@ -178,19 +178,18 @@ class Actions:
             command_word = list_of_words[0]
             print(MSG1.format(command_word=command_word))
             return False
+        item_name = list_of_words[1]
         player = game.player
-        lieu_actuel = game.player.current_room
-        objet = list_of_words[1]
-        for item in lieu_actuel.inventory :
-            if item == objet:
-                pris = item
-            else:
-                print(" Il n'y a pas de {objet.name} dans cette salle")
-                return False
-            player.inventory[objet] = pris
-            lieu_actuel.inventory.remove(pris)
-            print("Vous avez récuperé l'objet : " + str(objet))
-            return True
+        current_room = player.current_room
+
+        if item_name not in current_room.inventory:
+            print(f"L'objet {item_name} n'est pas dans cette pièce.")
+            return False
+
+        item = next((obj for obj in current_room.inventory if obj == item_name), None)
+
+        current_room.inventory.remove(item_name)
+        player.inventory[item_name] = item
 
 
     def check(game, list_of_words,number_of_parameters):
