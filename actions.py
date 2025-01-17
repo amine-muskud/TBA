@@ -182,14 +182,28 @@ class Actions:
         player = game.player
         current_room = player.current_room
 
-        if item_name not in current_room.inventory:
-            print(f"L'objet {item_name} n'est pas dans cette pièce.")
+        item = None
+        for obj in current_room.inventory:
+            if obj.name == item_name:
+                item = obj
+                break
+
+        if item is None:
+            print(f"L'objet : {item_name} n'est pas présent dans la salle.")
             return False
 
-        item = next((obj for obj in current_room.inventory if obj == item_name), None)
+        i = 0
+        for items in player.inventory :
+            i = i + items.weight
+        if i + item.weight > player.max_weight:
+            print("L'objet est trop lourd ! Il va falloir vous décharger de quelques affaires...")
+            return False
+        else:
 
-        current_room.inventory.remove(item_name)
-        player.inventory[item_name] = item
+            current_room.inventory.remove(item)
+            player.inventory[item] = item.description
+            print(f"Vous avez récuperé l'objet : {item.name} .")
+            return True
 
 
     def check(game, list_of_words,number_of_parameters):
@@ -201,3 +215,30 @@ class Actions:
             return False
         game.player.get_inventory()
         return True
+    
+    def drop(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        item_name = list_of_words[1]
+        player = game.player
+        current_room = player.current_room
+
+        item = None
+        for obj in player.inventory:
+            if obj.name == item_name:
+                item = obj
+                break
+
+        if item is None:
+            print(f"L'objet : {item_name} n'est pas présent dans votre inventaire.")
+            return False
+        
+        else:
+            current_room.inventory.add(item)
+            player.inventory.pop(item)
+            print(f"Vous avez jeté l'objet : {item.name} .")
+            return True

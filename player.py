@@ -29,6 +29,7 @@ class Player():
         self.name = name
         self.current_room = None
         self.inventory = {}
+        self.max_weight = 25
     
 
     def get_history(self,history):

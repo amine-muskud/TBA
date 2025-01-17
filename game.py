@@ -38,7 +38,8 @@ class Game:
         self.commands["take"] = take
         check = Command("check", " Permet de voir le contenu de son inventaire",Actions.check,0 )
         self.commands["check"] = check
-
+        drop = Command("drop","Permet de se débarasser d'un item présent dans son inventaire",Actions.drop,1)
+        self.commands["drop"] = drop
 
         # Setup rooms
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
@@ -124,9 +125,13 @@ class Game:
 
         Chemin.exits = {"D": None, "N" : None, "E" :Jungle, "S" : Village, "O" : Plage,"U": Volcan}
 
-        Bague = Item("Bague","elle brille",2)
-        Volcan.inventory = set([Bague.name])
-
+        bague = Item("bague","elle brille",20)
+        Volcan.inventory.add(bague)
+        épée = Item("épée", "Une épée tranchante",6)
+        Volcan.inventory.add(épée)
+        bouclier = Item("bouclier","Un bouclier fait avec du bois de sapin",4)
+        Volcan.inventory.add(bouclier)
+        
         # Setup player and starting room
 
         self.player = Player(input("\nEntrez votre nom: "))
