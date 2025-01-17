@@ -60,7 +60,7 @@ class Player():
     
     def get_inventory(self):
         if self.inventory =={}:
-            return "Votre inventaire est vide !"
+            return print("Votre inventaire est vide !")
         else:
             print("\n Votre inventaire contient :")
             for i in self.inventory.keys():

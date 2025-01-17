@@ -158,6 +158,7 @@ class Actions:
             last_room = game.player.history.pop()
             game.player.current_room = last_room
             print(game.player.current_room.get_long_description())
+            return True
 
     def look(game, list_of_words,number_of_parameters):
         l = len(list_of_words)
@@ -178,7 +179,26 @@ class Actions:
             print(MSG1.format(command_word=command_word))
             return False
         player = game.player
-        item1 = game.item.name
         lieu_actuel = game.player.current_room
-        lieu_actuel.inventory.remove(list_of_words[1])
-        player.inventory[list_of_words[1]] = list_of_words[1].description
+        objet = list_of_words[1]
+        for item in lieu_actuel.inventory :
+            if item == objet:
+                pris = item
+            else:
+                print(" Il n'y a pas de {objet.name} dans cette salle")
+                return False
+            player.inventory[objet] = pris
+            lieu_actuel.inventory.remove(pris)
+            print("Vous avez récuperé l'objet : " + str(objet))
+            return True
+
+
+    def check(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        game.player.get_inventory()
+        return True
