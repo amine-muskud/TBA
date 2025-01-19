@@ -242,3 +242,23 @@ class Actions:
             player.inventory.pop(item)
             print(f"Vous avez jeté l'objet : {item.name} .")
             return True
+        
+
+    def talk(game, list_of_words,number_of_parameters):
+        l = len(list_of_words)
+        # If the number of parameters is incorrect, print an error message and return False.
+        if l != number_of_parameters + 1:
+            command_word = list_of_words[0]
+            print(MSG1.format(command_word=command_word))
+            return False
+        character_name = list_of_words[1]
+        current_room = game.player.current_room
+        character = None
+
+        if character_name not in current_room.characters:
+            print(f"{character_name} n'est pas dans cette pièce.")
+            return False
+        character = current_room.characters[character_name]
+        message = character.get_msg()
+        print(f"{character_name} s'adresse à vous : {message}")
+        return True

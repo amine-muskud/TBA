@@ -29,6 +29,8 @@ class Room:
         self.description = description
         self.exits = {}
         self.inventory = set()
+        self.characters = {}
+        
     def __str__(self):
         return f"{self.name}"    
     # Define the get_exit method.

@@ -7,6 +7,7 @@ from player import Player
 from command import Command
 from actions import Actions
 from item import Item
+from character import Character
 
 class Game:
 
@@ -40,6 +41,8 @@ class Game:
         self.commands["check"] = check
         drop = Command("drop","Permet de se débarasser d'un item présent dans son inventaire",Actions.drop,1)
         self.commands["drop"] = drop
+        talk = Command("talk","Permet de parler avec un PNJ",Actions.talk,1)
+        self.commands["talk"] = talk
 
         # Setup rooms
         Volcan = Room("Volcan", "Vous vous trouvez au sommet du volcan, vous apercevez au loin plusieurs lieux différents. A l'est, vous apercevez une plage qui semble animée. Au sud, vous apercevez un village. Enfin à l'est vous apercevez une immense jungle. Il serait judicieux de quitter le Volcan au plus vite et d'éviter de vous approchez du bord.")
@@ -131,6 +134,8 @@ class Game:
         Volcan.inventory.add(épée)
         bouclier = Item("bouclier","Un bouclier fait avec du bois de sapin",4)
         Volcan.inventory.add(bouclier)
+        Lakitu = Character("Lakitu","Un drôle de magicien se déplaçant sur un nuage",Volcan, ["Hmm tu n'es pas Mario...","Test2"])
+        Volcan.inventory.add(Lakitu)
         
         # Setup player and starting room
 
